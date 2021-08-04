@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="id_activityScreenTitles">
+
+        <item></item>
+        <item>DashBoard</item>
+        <item>My Profile</item>
+        <item>Nearby Restaurants</item>
+        <item>Settings</item>
+        <item>About Us</item>
+        <item/>
+        <item>Log out </item>
+    </string-array>
+
+    <array name="id_activityScreenIcons">
+
+        <item></item>
+        <item>@drawable/icon_feather_home</item>
+        <item>@drawable/icon_dumbbell</item>
+        <item>@drawable/icon_menu</item>
+        <item>drawable/icon_menu</item>
+        <item>drawable/icon_menu</item>
+        <item>0</item>
+        <item>drawable/icon_menu</item>
+
+    </array>
+
+</resources>

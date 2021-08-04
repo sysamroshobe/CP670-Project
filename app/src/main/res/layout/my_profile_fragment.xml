@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Profile Fragment"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="176dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="124dp"
+        android:src="@drawable/user_profile_icon"
+        app:civ_border_color="#FFA000"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Full_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Username"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <TextView
+        android:id="@+id/email_address"
+        android:layout_width="187dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="gigioshobe21@fgmail.com"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/Full_Name"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="@+id/Full_Name"
+        app:layout_constraintTop_toBottomOf="@+id/Full_Name" />
+
+    <Button
+        android:id="@+id/Gender_buttn"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/search_bg"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="@string/gender_string"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/height_buttn"
+        app:layout_constraintEnd_toStartOf="@+id/age_btn"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_address"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/age_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/static_rv_bg"
+        android:text="@string/bday_string"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/Gender_buttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Gender_buttn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/height_buttn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/static_rv_bg"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="@string/height_text"
+        app:layout_constraintBottom_toBottomOf="@+id/weight_btn"
+        app:layout_constraintEnd_toStartOf="@+id/weight_btn"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weight_btn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/weight_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/static_rv_bg"
+        android:text="@string/weight_string"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="452dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

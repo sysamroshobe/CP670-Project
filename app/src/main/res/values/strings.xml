@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CP670-Project</string>
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="log_in_button_text">Log In</string>
+    <string name="login_hint_text">(Hint: You can log in with admin/admin)</string>
+    <string name="height_text">183.0 cm</string>
+    <string name="bday_string">Dec.25.1991</string>
+    <string name="gender_string">Gender</string>
+    <string name="weight_string">251.0 lb</string>
+</resources>
