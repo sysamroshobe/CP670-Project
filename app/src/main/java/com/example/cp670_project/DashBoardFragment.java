@@ -41,33 +41,30 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
     int pos;
     ViewGroup root;
 
+    private Account account;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        account = (Account) getArguments().getSerializable("Account");
 
         root = (ViewGroup) inflater.inflate(R.layout.dashboard_fragment, container, false);
 
         super.onViewCreated(root, savedInstanceState);
 
-
         final ArrayList<StaticRvModel> item = new ArrayList<>();
-        item.add(new StaticRvModel(R.drawable.burger,"burger"));
-        item.add(new StaticRvModel(R.drawable.pizza,"pizza"));
-        item.add(new StaticRvModel(R.drawable.fries,"fries"));
-        item.add(new StaticRvModel(R.drawable.sandwich, "sandwich"));
-        item.add(new StaticRvModel(R.drawable.icecream,"dessert"));
+        item.add(new StaticRvModel(R.drawable.burger,"Meals"));
+        item.add(new StaticRvModel(R.drawable.pizza,"Exercises"));
+//        item.add(new StaticRvModel(R.drawable.fries,"SomethingElse?"));
+
 
         recyclerView = root.findViewById(R.id.rv_1);
-        staticRvAdapter = new StaticRvAdapter(item, this, this);
+        staticRvAdapter = new StaticRvAdapter(item, this, this, this.account);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(staticRvAdapter);
 

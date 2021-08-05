@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -27,7 +28,6 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
-import com.yarolegovich.slidingrootnav.SlidingRootNavLayout;
 
 
 import java.util.ArrayList;
@@ -41,12 +41,14 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
     private static final int POS_CLOSE = 0;
     private static final int POS_DASHBOARD = 1;
     private static final int POS_MY_PROFILE = 2;
-    private static final int POS_NEARBY_RES = 3;
-    private static final int POS_SETTINGS = 4;
-    private static final int POS_ABOUT_US = 5;
+    private static final int POS_ADD_MEAL = 3;
+    private static final int POS_ADD_EXERCISE = 4;
+    private static final int POS_SETTINGS = 5;
+    private static final int POS_ABOUT_US = 6;
     private static final int POS_LOGOUT = 7;
     private String[] screenTitles;
     private Drawable[] screenIcons;
+    private Account account; // THIS IS GLOBAL
 
     private SlidingRootNav slidingRootNav;
 
@@ -54,16 +56,13 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
-
+        account = (Account) getIntent().getExtras().getSerializable("Account");
 
         ConstraintLayout constraintLayout = findViewById(R.id.backgroundMain);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
-
-
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,7 +85,8 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_DASHBOARD).setChecked(true),
                 createItemFor(POS_MY_PROFILE),
-                createItemFor(POS_NEARBY_RES),
+                createItemFor(POS_ADD_MEAL),
+                createItemFor(POS_ADD_EXERCISE),
                 createItemFor(POS_SETTINGS),
                 createItemFor(POS_ABOUT_US),
                 new SpaceItem(260),
@@ -100,8 +100,6 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
         list.setAdapter(adapter);
 
         adapter.setSelected(POS_DASHBOARD);
-
-
     }
 
     private DrawerItem createItemFor(int position) {
@@ -111,7 +109,6 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
                 .withSelectedIconTint(color(R.color.pink))
                 .withSelectedTextTint(color(R.color.pink));
     }
-
 
     @ColorInt
     private int color(@ColorRes int res){
@@ -143,9 +140,12 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
     @Override
     public void onItemSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Account", account);
 
         if (position == POS_DASHBOARD){
             DashBoardFragment dashBoardFragment = new DashBoardFragment();
+            dashBoardFragment.setArguments(bundle);
             transaction.replace(R.id.container, dashBoardFragment);
         }
 
@@ -154,9 +154,16 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
             transaction.replace(R.id.container, myProfileFragment);
         }
 
-        else if (position == POS_NEARBY_RES){
-            NearbyResFragment nearbyResFragment = new NearbyResFragment();
-            transaction.replace(R.id.container, nearbyResFragment);
+        else if (position == POS_ADD_MEAL) {
+            AddMealFragment addMealFragment = new AddMealFragment();
+            addMealFragment.setArguments(bundle);
+            transaction.replace(R.id.container, addMealFragment);
+        }
+
+        else if (position == POS_ADD_EXERCISE) {
+            AddExerciseFragment addExerciseFragment = new AddExerciseFragment();
+            addExerciseFragment.setArguments(bundle);
+            transaction.replace(R.id.container, addExerciseFragment);
         }
 
         else if (position == POS_SETTINGS){
