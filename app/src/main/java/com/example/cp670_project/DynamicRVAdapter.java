@@ -67,7 +67,7 @@ public class DynamicRVAdapter extends RecyclerView.Adapter<DynamicRVAdapter.Dyna
     public void onBindViewHolder(@NonNull DynamicRVAdapter.DynamicRvHolder holder, int position) {
         DynamicRVModel currentItem = dynamicRVModels.get(position);
         holder.imageView.setImageResource(currentItem.getImage());
-        holder.textView.setText(currentItem.getDetails());
+        holder.textView.setText(currentItem.getName());
     }
 
     @Override
