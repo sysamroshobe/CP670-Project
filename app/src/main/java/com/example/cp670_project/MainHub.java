@@ -27,7 +27,6 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
-import com.yarolegovich.slidingrootnav.SlidingRootNavLayout;
 
 
 import java.util.ArrayList;
@@ -155,8 +154,8 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
         }
 
         else if (position == POS_NEARBY_RES){
-            NearbyResFragment nearbyResFragment = new NearbyResFragment();
-            transaction.replace(R.id.container, nearbyResFragment);
+            AddMealFragment addMealFragment = new AddMealFragment();
+            transaction.replace(R.id.container, addMealFragment);
         }
 
         else if (position == POS_SETTINGS){
