@@ -22,11 +22,13 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
     DashBoardFragment activity;
     boolean check = true;
     boolean select = true;
+    private Account account;
 
-    public StaticRvAdapter(ArrayList<StaticRvModel> items, DashBoardFragment activity, UpdateRecyclerView updateRecyclerView) {
+    public StaticRvAdapter(ArrayList<StaticRvModel> items, DashBoardFragment activity, UpdateRecyclerView updateRecyclerView, Account account) {
         this.items = items;
         this.activity = activity;
         this.updateRecyclerView = updateRecyclerView;
+        this.account = account;
     }
 
     @NonNull
@@ -68,25 +70,17 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
                 row_index = position;
                 notifyDataSetChanged();
 
-                if (position==0){
-
+                if (position == 0) {
                     ArrayList<DynamicRVModel> items = new ArrayList<DynamicRVModel>();
-                    items.add(new DynamicRVModel("burger 1", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 2", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 3", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 4", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 5", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 6", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 7", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 8", R.drawable.burger_png,0));
-                    items.add(new DynamicRVModel("burger 9", R.drawable.burger_png,0));
+                    final Meal meals[] = account.getMeals();
+                        for (int i = 0; i < meals.length; i++) {
+                        items.add(new DynamicRVModel(meals[i].getName(), R.drawable.burger_png,0));
+                    }
 
                     updateRecyclerView.callback(position, items);
-
                 }
 
-                else if (position==1){
-
+                else if (position == 1) {
                     ArrayList<DynamicRVModel> items = new ArrayList<DynamicRVModel>();
                     items.add(new DynamicRVModel("pizza 1", R.drawable.pizza_png,1));
                     items.add(new DynamicRVModel("pizza 2", R.drawable.pizza_png,1));
@@ -99,11 +93,9 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
                     items.add(new DynamicRVModel("pizza 9", R.drawable.pizza_png,1));
 
                     updateRecyclerView.callback(position, items);
-
                 }
 
-                else if (position==2){
-
+                else if (position == 2){
                     ArrayList<DynamicRVModel> items = new ArrayList<DynamicRVModel>();
                     items.add(new DynamicRVModel("fries 1", R.drawable.fries_png,2));
                     items.add(new DynamicRVModel("fries 2", R.drawable.fries_png,2));
@@ -116,11 +108,9 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
                     items.add(new DynamicRVModel("fries 9", R.drawable.fries_png,2));
 
                     updateRecyclerView.callback(position, items);
-
                 }
 
                 else if (position==3){
-
                     ArrayList<DynamicRVModel> items = new ArrayList<DynamicRVModel>();
                     items.add(new DynamicRVModel("sandwich 1", R.drawable.sandwitch_png,3));
                     items.add(new DynamicRVModel("sandwich 2", R.drawable.sandwitch_png,3));
@@ -131,23 +121,6 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
                     items.add(new DynamicRVModel("sandwich 7", R.drawable.sandwitch_png,3));
                     items.add(new DynamicRVModel("sandwich 8", R.drawable.sandwitch_png,3));
                     items.add(new DynamicRVModel("sandwich 9", R.drawable.sandwitch_png,3));
-
-                    updateRecyclerView.callback(position, items);
-
-                }
-
-                else if (position==4){
-
-                    ArrayList<DynamicRVModel> items = new ArrayList<DynamicRVModel>();
-                    items.add(new DynamicRVModel("dessert 1", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 2", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 3", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 4", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 5", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 6", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 7", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 8", R.drawable.dessert_png,4));
-                    items.add(new DynamicRVModel("dessert 9", R.drawable.dessert_png,4));
 
                     updateRecyclerView.callback(position, items);
 

@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 public class AddMealFragment extends Fragment {
+    private Account account;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.add_meal_fragment, container, false);
-        Account account = (Account) getArguments().getSerializable("Account");
+        account = (Account) getArguments().getSerializable("Account");
 
         final EditText meal_name_text_box = root.findViewById(R.id.mealName);
         final EditText calories_in_text_box = root.findViewById(R.id.caloriesIn);

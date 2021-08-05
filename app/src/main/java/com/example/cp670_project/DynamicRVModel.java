@@ -5,6 +5,7 @@ public class DynamicRVModel {
     String name;
     private int image;
     int pos;
+    private int calories;
 
     public DynamicRVModel(String name, int image, int pos) {
         this.name = name;

@@ -145,6 +145,7 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
 
         if (position == POS_DASHBOARD){
             DashBoardFragment dashBoardFragment = new DashBoardFragment();
+            dashBoardFragment.setArguments(bundle);
             transaction.replace(R.id.container, dashBoardFragment);
         }
 
