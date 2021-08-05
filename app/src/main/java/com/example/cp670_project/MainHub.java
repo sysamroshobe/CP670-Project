@@ -143,6 +143,8 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
         Bundle bundle = new Bundle();
         bundle.putSerializable("Account", account);
 
+        System.out.println(account.getExercises().length);
+
         if (position == POS_DASHBOARD){
             DashBoardFragment dashBoardFragment = new DashBoardFragment();
             dashBoardFragment.setArguments(bundle);
