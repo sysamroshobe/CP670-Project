@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.VideoView;
 
+import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 
@@ -129,7 +131,13 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void login() {
+        Meal[] meals = new Meal[0];
+        Exercise[] exercises = new Exercise[0];
+        CustomExercise[] customExercises = new CustomExercise[0];
+        Account newAcc = new Account("", 25, 1.75, 150, "mikesadowski@gmail.com", "123", "123", meals, exercises, customExercises);
+
         Intent intent = new Intent(LoginPage.this, MainHub.class);
+        intent.putExtra("Account", newAcc);
         startActivity(intent);
     }
 

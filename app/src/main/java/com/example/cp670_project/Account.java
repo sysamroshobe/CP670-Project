@@ -1,8 +1,9 @@
 package com.example.cp670_project;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Account {
+public class Account implements Serializable {
     private String id;
     private String name;
     private int age;
