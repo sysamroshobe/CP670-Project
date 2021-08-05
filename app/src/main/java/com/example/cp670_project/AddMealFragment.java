@@ -20,8 +20,8 @@ public class AddMealFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.add_meal_fragment, container, false);
         account = (Account) getArguments().getSerializable("Account");
 
-        final EditText meal_name_text_box = root.findViewById(R.id.exerciseName);
-        final EditText calories_in_text_box = root.findViewById(R.id.type);
+        final EditText meal_name_text_box = root.findViewById(R.id.mealName);
+        final EditText calories_in_text_box = root.findViewById(R.id.caloriesIn);
 
         final Button save_meal_button = root.findViewById(R.id.saveMealButton);
         save_meal_button.setOnClickListener(new View.OnClickListener() {
