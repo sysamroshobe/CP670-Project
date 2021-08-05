@@ -42,8 +42,9 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
     private static final int POS_DASHBOARD = 1;
     private static final int POS_MY_PROFILE = 2;
     private static final int POS_ADD_MEAL = 3;
-    private static final int POS_SETTINGS = 4;
-    private static final int POS_ABOUT_US = 5;
+    private static final int POS_ADD_EXERCISE = 4;
+    private static final int POS_SETTINGS = 5;
+    private static final int POS_ABOUT_US = 6;
     private static final int POS_LOGOUT = 7;
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -85,6 +86,7 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
                 createItemFor(POS_DASHBOARD).setChecked(true),
                 createItemFor(POS_MY_PROFILE),
                 createItemFor(POS_ADD_MEAL),
+                createItemFor(POS_ADD_EXERCISE),
                 createItemFor(POS_SETTINGS),
                 createItemFor(POS_ABOUT_US),
                 new SpaceItem(260),
@@ -155,6 +157,12 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
             AddMealFragment addMealFragment = new AddMealFragment();
             addMealFragment.setArguments(bundle);
             transaction.replace(R.id.container, addMealFragment);
+        }
+
+        else if (position == POS_ADD_EXERCISE) {
+            AddExerciseFragment addExerciseFragment = new AddExerciseFragment();
+            addExerciseFragment.setArguments(bundle);
+            transaction.replace(R.id.container, addExerciseFragment);
         }
 
         else if (position == POS_SETTINGS){
