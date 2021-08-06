@@ -4,14 +4,14 @@
     <string-array name="id_activityScreenTitles">
 
         <item></item>
-        <item>DashBoard</item>
-        <item>My Profile</item>
-        <item>Add Meal</item>
-        <item>Add Exercise</item>
-        <item>Settings</item>
-        <item>About Us</item>
+        <item>@string/dashboard</item>
+        <item>@string/my_profile</item>
+        <item>@string/add_meal</item>
+        <item>@string/add_exercise</item>
+        <item>@string/settings</item>
+        <item>@string/help</item>
         <item/>
-        <item>Log out </item>
+        <item>@string/log_out </item>
     </string-array>
 
     <array name="id_activityScreenIcons">

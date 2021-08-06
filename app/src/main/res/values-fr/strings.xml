@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CP670-Project1</string>
-    <string name="username_text">Username1</string>
-    <string name="password_text">Password1</string>
-    <string name="log_in_button_text">Log In1</string>
-    <string name="login_hint_text">(Hint: You can log in with admin/admin)1</string>
-    <string name="height_text">183.0 cm1</string>
-    <string name="bday_string">Dec.25.19911</string>
-    <string name="gender_string">Gender1</string>
-    <string name="weight_string">251.0 lb1</string>
+    <string name="app_name">CP670-Projet</string>
+    <string name="username_text">Nom d\'utilisateur</string>
+    <string name="password_text">Passe</string>
+    <string name="log_in_button_text">Connexion</string>
+    <string name="login_hint_text">(Astuce : Vous pouvez vous connecter avec admin/admin)</string>
+    <string name="height_text">183.0 cm</string>
+    <string name="bday_string">Dec.25.1991</string>
+    <string name="gender_string">Sexe</string>
+    <string name="weight_string">251.0 lb</string>
+
+    <string name="dashboard">Tableau de bord</string>
+    <string name="my_profile">Profil</string>
+    <string name="add_meal">Ajouter un repas</string>
+    <string name="add_exercise">Ajouter un exercice</string>
+    <string name="settings">Paramètres</string>
+    <string name="help">Aider</string>
+    <string name="log_out">Se déconnecter</string>
 </resources>
