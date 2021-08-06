@@ -17,4 +17,12 @@
     <string name="settings">Paramètres</string>
     <string name="help">Aider</string>
     <string name="log_out">Se déconnecter</string>
+
+    <string name="mealsText">Repas</string>
+    <string name="exercisesText">Exercices</string>
+
+    <string name="welcome">Bonjour</string>
+
+    <string name="meal_name">Nom du repas</string>
+    <string name="calories_in">Calories dans</string>
 </resources>
