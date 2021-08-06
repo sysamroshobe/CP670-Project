@@ -57,9 +57,11 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
 
         super.onViewCreated(root, savedInstanceState);
 
+        String mealsText = getResources().getString(R.string.mealsText);
+        String exercisesText = getResources().getString(R.string.exercisesText);
         final ArrayList<StaticRvModel> item = new ArrayList<>();
-        item.add(new StaticRvModel(R.drawable.burger,"Meals"));
-        item.add(new StaticRvModel(R.drawable.pizza,"Exercises"));
+        item.add(new StaticRvModel(R.drawable.burger,mealsText));
+        item.add(new StaticRvModel(R.drawable.pizza,exercisesText));
 //        item.add(new StaticRvModel(R.drawable.fries,"SomethingElse?"));
 
 

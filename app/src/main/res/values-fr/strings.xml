@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CP670-Projet</string>
+    <string name="username_text">Nom d\'utilisateur</string>
+    <string name="password_text">Passe</string>
+    <string name="log_in_button_text">Connexion</string>
+    <string name="login_hint_text">(Astuce : Vous pouvez vous connecter avec admin/admin)</string>
+    <string name="height_text">183.0 cm</string>
+    <string name="bday_string">Dec.25.1991</string>
+    <string name="gender_string">Sexe</string>
+    <string name="weight_string">251.0 lb</string>
+
+    <string name="dashboard">Tableau de bord</string>
+    <string name="my_profile">Profil</string>
+    <string name="add_meal">Ajouter un repas</string>
+    <string name="add_exercise">Ajouter un exercice</string>
+    <string name="settings">Paramètres</string>
+    <string name="help">Aider</string>
+    <string name="log_out">Se déconnecter</string>
+
+    <string name="mealsText">Repas</string>
+    <string name="exercisesText">Exercices</string>
+
+    <string name="welcome">Bonjour</string>
+
+    <string name="meal_name">Nom du repas</string>
+    <string name="calories_in">Calories dans</string>
+
+    <string name="exercise_name">Nom exercice</string>
+    <string name="type">Taper</string>
+    <string name="weight">Poids</string>
+    <string name="distance">Distance</string>
+    <string name="length_of_time">Temps</string>
+    <string name="calories_out">Calories perdues</string>
+
+    <string name="save_button">Enregistrer</string>
+
+    <string name="mealSuccessText">Repas enregistré avec succès</string>
+    <string name="mealErrorText">Erreur : les calories doivent être un nombre entier</string>
+
+    <string name="exerciseSuccessText">Exercice enregistré avec succès</string>
+    <string name="exerciseErrorText">Erreur : Le poids, la distance et la durée doivent être des doubles. Calories Out doit être un nombre entier.</string>
+</resources>

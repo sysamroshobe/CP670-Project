@@ -53,10 +53,12 @@ public class AddExerciseFragment extends Fragment {
                         length_of_time_text_box.setText("");
                         calories_out_text_box.setText("");
 
-                        Toast toast = Toast.makeText(getActivity(), "Exercise Successfully Saved", Toast.LENGTH_LONG);
+                        String exerciseSuccessText = getResources().getString(R.string.exerciseSuccessText);
+                        Toast toast = Toast.makeText(getActivity(), exerciseSuccessText, Toast.LENGTH_LONG);
                         toast.show();
                     } catch (NumberFormatException e) {
-                        Toast toast = Toast.makeText(getActivity(), "Error: Weight, Distance, Length of Time must be doubles. Calories Out must be Integer.", Toast.LENGTH_LONG);
+                        String exerciseErrorText = getResources().getString(R.string.exerciseErrorText);
+                        Toast toast = Toast.makeText(getActivity(), exerciseErrorText, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }
