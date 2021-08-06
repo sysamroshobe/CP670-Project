@@ -24,4 +24,13 @@
 
     <string name="meal_name">Meal Name</string>
     <string name="calories_in">Calories In</string>
+
+    <string name="exercise_name">Exercise Name</string>
+    <string name="type">Type</string>
+    <string name="weight">Weight</string>
+    <string name="distance">Distance</string>
+    <string name="length_of_time">Length Of Time</string>
+    <string name="calories_out">Calories Out</string>
+
+    <string name="save_button">Save</string>
 </resources>

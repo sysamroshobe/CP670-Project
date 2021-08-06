@@ -25,4 +25,13 @@
 
     <string name="meal_name">Nom du repas</string>
     <string name="calories_in">Calories dans</string>
+
+    <string name="exercise_name">Nom exercice</string>
+    <string name="type">Taper</string>
+    <string name="weight">Poids</string>
+    <string name="distance">Distance</string>
+    <string name="length_of_time">Temps</string>
+    <string name="calories_out">Calories perdues</string>
+
+    <string name="save_button">Enregistrer</string>
 </resources>
