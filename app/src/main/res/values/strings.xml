@@ -33,4 +33,10 @@
     <string name="calories_out">Calories Out</string>
 
     <string name="save_button">Save</string>
+
+    <string name="mealSuccessText">Meal Successfully Saved</string>
+    <string name="mealErrorText">Error: Calories must be an integer</string>
+
+    <string name="exerciseSuccessText">Exercise Successfully Saved</string>
+    <string name="exerciseErrorText">Error: Weight, Distance, Length of Time must be doubles. Calories Out must be Integer.</string>
 </resources>

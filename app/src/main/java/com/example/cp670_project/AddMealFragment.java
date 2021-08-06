@@ -40,10 +40,12 @@ public class AddMealFragment extends Fragment {
                         meal_name_text_box.setText("");
                         calories_in_text_box.setText("");
 
-                        Toast toast = Toast.makeText(getActivity(), "Meal Successfully Saved", Toast.LENGTH_LONG);
+                        String mealSuccessText = getResources().getString(R.string.mealSuccessText);
+                        Toast toast = Toast.makeText(getActivity(), mealSuccessText, Toast.LENGTH_LONG);
                         toast.show();
                     } catch (NumberFormatException e) {
-                        Toast toast = Toast.makeText(getActivity(), "Error: Calories must be an integer", Toast.LENGTH_LONG);
+                        String mealErrorText = getResources().getString(R.string.mealErrorText);
+                        Toast toast = Toast.makeText(getActivity(), mealErrorText, Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

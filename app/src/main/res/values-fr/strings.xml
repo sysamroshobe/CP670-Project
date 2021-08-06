@@ -34,4 +34,10 @@
     <string name="calories_out">Calories perdues</string>
 
     <string name="save_button">Enregistrer</string>
+
+    <string name="mealSuccessText">Repas enregistré avec succès</string>
+    <string name="mealErrorText">Erreur : les calories doivent être un nombre entier</string>
+
+    <string name="exerciseSuccessText">Exercice enregistré avec succès</string>
+    <string name="exerciseErrorText">Erreur : Le poids, la distance et la durée doivent être des doubles. Calories Out doit être un nombre entier.</string>
 </resources>
