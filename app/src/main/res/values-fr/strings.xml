@@ -40,4 +40,7 @@
 
     <string name="exerciseSuccessText">Exercice enregistré avec succès</string>
     <string name="exerciseErrorText">Erreur : Le poids, la distance et la durée doivent être des doubles. Calories Out doit être un nombre entier.</string>
+    <string name="repetitions">5</string>
+    <string name="sets">3</string>
+    <string name="image">0</string>
 </resources>

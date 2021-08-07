@@ -1,8 +1,10 @@
 package com.example.cp670_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -31,6 +34,9 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
+    private static final String TAG = "DashBoardFragment";
+    private Context mContext;
+    private ExercisesDataSource datasource;
     private RecyclerView recyclerView, recyclerView2;
     private StaticRvAdapter staticRvAdapter;
     BarChart mChart1;
@@ -70,7 +76,32 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(staticRvAdapter);
 
-        items = new ArrayList<>();
+        List<Exercise> testList = datasource.getAllExercises();
+
+        if (testList.size() == 0) {
+            datasource.createExercise("Dumbbell Bench Press", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 5, 0);
+            datasource.createExercise("Incline Dumbbell Bench Press", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 4, 0);
+            datasource.createExercise("Dumbbell Floor Press", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 3, 0);
+            datasource.createExercise("Standing Dumbbell Press", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 4, 0);
+            datasource.createExercise("Dumbbell Lateral Raise", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 3, 0);
+            datasource.createExercise("Dumbbell Tricep Kickback", "", "Dumbbell",
+                    50, 0, 0, 0, 8, 3, 0);
+        }
+        List<Exercise> exerciseList = datasource.getAllExercises();
+
+        for (int i = 0; i < testList.size(); i++) {
+             Exercise exercise = exerciseList.get(i);
+             // TODO: add calories and flag
+             Boolean caloriesInFlag = Boolean.FALSE;
+             items.add(new DynamicRVModel(exercise.getName(), i, 0, 0 , caloriesInFlag));
+             Log.d(TAG, "Added exercise " + exercise.getName());
+         }
+        testList.clear();
 
         recyclerView2 = root.findViewById(R.id.rv_2);
         dynamicRVAdapter = new DynamicRVAdapter(items);
@@ -84,6 +115,25 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
 
         return root;
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+
+        // 1. call to create database
+        datasource = new ExercisesDataSource(mContext);
+
+        // 2. open Database for writing
+        datasource.open();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        datasource.close();
+        mContext = null;
     }
 
     @Override

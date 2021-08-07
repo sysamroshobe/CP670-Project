@@ -23,6 +23,9 @@ public class AddExerciseFragment extends Fragment {
         final EditText distance_text_box = root.findViewById(R.id.distance);
         final EditText length_of_time_text_box = root.findViewById(R.id.lengthOfTime);
         final EditText calories_out_text_box = root.findViewById(R.id.caloriesOut);
+        final EditText repetitons_text_box = root.findViewById(R.id.repetitions);
+        final EditText sets_text_box = root.findViewById(R.id.sets);
+        final EditText image_text_box = root.findViewById(R.id.image);
 
         final Button save_meal_button = root.findViewById(R.id.saveMealButton);
         save_meal_button.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +37,9 @@ public class AddExerciseFragment extends Fragment {
                 final Editable distance = distance_text_box.getText();
                 final Editable lengthOfTime = length_of_time_text_box.getText();
                 final Editable caloriesOut = calories_out_text_box.getText();
+                final Editable repetitionsTextbox = repetitons_text_box.getText();
+                final Editable setsTextbox = sets_text_box.getText();
+                final Editable image = image_text_box.getText();
 
                 if (exerciseName.toString().length() > 0 && type.toString().length() > 0 && weight.toString().length() > 0
                         && distance.toString().length() > 0 && lengthOfTime.toString().length() > 0 && caloriesOut.toString().length() > 0) {
@@ -42,8 +48,11 @@ public class AddExerciseFragment extends Fragment {
                         double distanceDouble = Double.parseDouble(distance.toString());
                         double lengthOfTimeDouble = Double.parseDouble(lengthOfTime.toString());
                         int caloriesInt = Integer.parseInt(caloriesOut.toString());
+                        int repetitions = Integer.parseInt(repetitionsTextbox.toString());
+                        int sets = Integer.parseInt(setsTextbox.toString());
+                        int imageResult = Integer.parseInt(image.toString());
 
-                        Exercise newExercise = new Exercise(account.getId(), exerciseName.toString(), type.toString(), weightDouble, distanceDouble, lengthOfTimeDouble, caloriesInt);
+                        Exercise newExercise = new Exercise(account.getId(), exerciseName.toString(), type.toString(), weightDouble, distanceDouble, lengthOfTimeDouble, caloriesInt, repetitions, sets, imageResult);
                         account.addExercise(newExercise);
 
                         exercise_name_text_box.setText("");
@@ -52,6 +61,9 @@ public class AddExerciseFragment extends Fragment {
                         distance_text_box.setText("");
                         length_of_time_text_box.setText("");
                         calories_out_text_box.setText("");
+                        repetitons_text_box.setText("");
+                        sets_text_box.setText("");
+                        image_text_box.setText("");
 
                         String exerciseSuccessText = getResources().getString(R.string.exerciseSuccessText);
                         Toast toast = Toast.makeText(getActivity(), exerciseSuccessText, Toast.LENGTH_LONG);

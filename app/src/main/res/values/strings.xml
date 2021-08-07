@@ -39,4 +39,7 @@
 
     <string name="exerciseSuccessText">Exercise Successfully Saved</string>
     <string name="exerciseErrorText">Error: Weight, Distance, Length of Time must be doubles. Calories Out must be Integer.</string>
+    <string name="repetitions">5</string>
+    <string name="sets">3</string>
+    <string name="image">0</string>
 </resources>

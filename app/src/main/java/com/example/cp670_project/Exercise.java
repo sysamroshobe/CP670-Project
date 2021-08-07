@@ -11,6 +11,9 @@ public class Exercise {
     private double distance;
     private double lengthOfTime;
     private int caloriesOut;
+    private int repetitions;
+    private int sets;
+    private int image;
     private Date date;
 
     private String createExerciseId() {
@@ -26,10 +29,14 @@ public class Exercise {
         this.distance = 0.0;
         this.lengthOfTime = 0.0;
         this.caloriesOut = 0;
+        this.repetitions = 0;
+        this.sets = 0;
+        this.image = 0;
         this.date = new Date();
     }
 
-    public Exercise(String ownerId, String name, String type, double weight, double distance, double lengthOfTime, int caloriesOut) {
+    public Exercise(String ownerId, String name, String type, double weight, double distance,
+                    double lengthOfTime, int caloriesOut, int repetitions, int sets, int image) {
         this.id = this.createExerciseId();
         this.ownerId = ownerId;
         this.name = name;
@@ -38,10 +45,15 @@ public class Exercise {
         this.distance = distance;
         this.lengthOfTime = lengthOfTime;
         this.caloriesOut = caloriesOut;
+        this.repetitions = repetitions;
+        this.sets = sets;
+        this.image = image;
         this.date = new Date();
     }
 
-    public Exercise(String id, String ownerId, String name, String type, double weight, double distance, double lengthOfTime, int caloriesOut, Date date) {
+    public Exercise(String id, String ownerId, String name, String type, double weight, double distance,
+                    double lengthOfTime, int caloriesOut, int repetitions, int sets,
+                    int image, Date date) {
         this.id = id;
         this.ownerId = ownerId;
         this.name = name;
@@ -50,11 +62,18 @@ public class Exercise {
         this.distance = distance;
         this.lengthOfTime = lengthOfTime;
         this.caloriesOut = caloriesOut;
+        this.repetitions = repetitions;
+        this.sets = sets;
+        this.image = image;
         this.date = date;
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public String getExercise() {
+        return name;
     }
 
     public String getOwnerId() {
@@ -85,12 +104,30 @@ public class Exercise {
         return this.caloriesOut;
     }
 
+    public int getRepetitions() {
+        return this.repetitions;
+    }
+
+    public int getSets() {
+        return this.sets;
+    }       
+
     public Date getDate() {
         return this.date;
     }
 
+    public void setId(String id) { this.id = id; }
+
+    public void setExercise(String name) {
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setOwner(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public void setType(String type) {
@@ -111,5 +148,25 @@ public class Exercise {
 
     public void setCaloriesOut(int caloriesOut) {
         this.caloriesOut = caloriesOut;
+    }
+
+    public void setRepetitions(int repetitions) {
+        this.repetitions = repetitions;
+    }
+
+    public void setSets(int sets) {
+        this.sets = sets;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public String toString () {
+        return name + "  " + id;
     }
 }
