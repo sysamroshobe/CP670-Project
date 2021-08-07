@@ -3,12 +3,14 @@ package com.example.cp670_project;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -94,13 +96,36 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         }
         List<Exercise> exerciseList = datasource.getAllExercises();
 
-        for (int i = 0; i < testList.size(); i++) {
-             Exercise exercise = exerciseList.get(i);
-             // TODO: add calories and flag
-             Boolean caloriesInFlag = Boolean.FALSE;
-             items.add(new DynamicRVModel(exercise.getName(), i, 0, 0 , caloriesInFlag));
-             Log.d(TAG, "Added exercise " + exercise.getName());
-         }
+        Exercise exercise = exerciseList.get(0);
+        Boolean caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise.getName());
+
+        Exercise exercise2 = exerciseList.get(1);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise2.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise2.getName());
+
+        Exercise exercise3 = exerciseList.get(2);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise3.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise3.getName());
+
+        Exercise exercise4 = exerciseList.get(3);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise4.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise4.getName());
+
+        Exercise exercise5 = exerciseList.get(4);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise5.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise5.getName());
+
+        Exercise exercise6 = exerciseList.get(5);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise6.getName(), 0, 0, 0 , caloriesInFlag));
+        Log.d(TAG, "Added exercise " + exercise6.getName());
+
         testList.clear();
 
         recyclerView2 = root.findViewById(R.id.rv_2);
