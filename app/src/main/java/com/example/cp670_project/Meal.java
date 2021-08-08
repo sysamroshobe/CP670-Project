@@ -30,7 +30,7 @@ public class Meal {
     }
 
     public Meal(String id, String ownerId, String name, int caloriesIn, Date date) {
-        this.id = id;
+        this.id = this.createMealId();
         this.ownerId = ownerId;
         this.name = name;
         this.caloriesIn = caloriesIn;
@@ -55,6 +55,12 @@ public class Meal {
 
     public Date getDate() {
         return this.date;
+    }
+
+    public void setId(String id) { this.id = id; }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setName(String name) {
