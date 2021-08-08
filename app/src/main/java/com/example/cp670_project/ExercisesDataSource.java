@@ -156,6 +156,7 @@ public class ExercisesDataSource {
         return exercise;
     }
 
+    // Meals
     public Meal createMeal(String item, String ownerId, int caloriesIn) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteOpenHelper.ITEM_NAME, item);
@@ -189,14 +190,14 @@ public class ExercisesDataSource {
 
     }
 
-    public void deleteAllMeal() {
+    public void deleteAllMeals() {
         System.out.println("Meal deleted all");
         Log.d(TAG, "delete all = ");
 
         database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, null, null);
     }
 
-    public List<Meal> getAllMeal() {
+    public List<Meal> getAllMeals() {
         List <Meal> meals = new ArrayList<>();
         Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_MEALS,
                 columns, null, null, null, null, null);
@@ -249,5 +250,113 @@ public class ExercisesDataSource {
         meal.setId(cursor.getString(0));
         meal.setName(cursor.getString(1));
         return meal;
+    }
+
+    // Accounts
+    public Account createAccount(String item, int age, double height, double weight,
+                                 String email, String username, String hashedPassword,
+                                 String salt) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.AGE, age);
+        values.put(MySQLiteOpenHelper.HEIGHT, height);
+        values.put(MySQLiteOpenHelper.WEIGHT, weight);
+        values.put(MySQLiteOpenHelper.EMAIL, email);
+        values.put(MySQLiteOpenHelper.USERNAME, username);
+        values.put(MySQLiteOpenHelper.HASHED_PASSWORD, hashedPassword);
+        values.put(MySQLiteOpenHelper.SALT, salt);
+
+        long insertId = database.insert(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS, null,
+                values);
+
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS,
+                columns, MySQLiteOpenHelper.ID + " = " + insertId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        Account newAccount = cursorToAccount(cursor);
+
+        // Log the item stored
+        Log.d(TAG, "item = " + cursorToAccount(cursor).toString()
+                + " insert ID = " + insertId);
+        cursor.close();
+
+        return newAccount;
+    }
+
+    public void deleteAccount(Account meal) {
+        String id = meal.getId();
+        Log.d(TAG, "delete item = " + id);
+        System.out.println("Account deleted with id: " + id);
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+    }
+
+    public void deleteAllAccounts() {
+        System.out.println("Account deleted all");
+        Log.d(TAG, "delete all = ");
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, null, null);
+    }
+
+    public List<Account> getAllAccounts() {
+        List <Account> meals = new ArrayList<>();
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_MEALS,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Account meal = cursorToAccount(cursor);
+            Log.d(TAG, "get item = " + cursorToAccount(cursor).toString());
+            meals.add(meal);
+            cursor.moveToNext();
+        }
+        // Make sure to close the cursor
+        cursor.close();
+        return meals;
+    }
+
+    public long countAccounts() {
+        long count = DatabaseUtils.queryNumEntries(database, MySQLiteOpenHelper.TABLE_OF_ACCOUNTS);
+        return count;
+    }
+
+    public Account updateAccount(String id, String item, int age, double height, double weight,
+                                 String email, String username, String hashedPassword,
+                                 String salt) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.AGE, age);
+        values.put(MySQLiteOpenHelper.HEIGHT, height);
+        values.put(MySQLiteOpenHelper.WEIGHT, weight);
+        values.put(MySQLiteOpenHelper.EMAIL, email);
+        values.put(MySQLiteOpenHelper.USERNAME, username);
+        values.put(MySQLiteOpenHelper.HASHED_PASSWORD, hashedPassword);
+        values.put(MySQLiteOpenHelper.SALT, salt);
+
+        // Update database
+        database.update(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS, values, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+        // Update object
+        Account account = new Account();
+        account.setName(item);
+        account.setAge(age);
+        account.setHeight(height);
+        account.setWeight(weight);
+        account.setEmailAddress(email);
+        account.setUsername(username);
+        account.setHashedSaltedPassword(hashedPassword);
+        account.setSalt(salt);
+
+        return account;
+    }
+
+    private Account cursorToAccount(Cursor cursor) {
+        Account account = new Account();
+        account.setId(cursor.getString(0));
+        account.setName(cursor.getString(1));
+        return account;
     }
 }

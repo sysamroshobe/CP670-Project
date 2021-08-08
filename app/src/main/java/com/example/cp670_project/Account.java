@@ -165,6 +165,8 @@ public class Account implements Serializable {
         this.name = name;
     }
 
+    public void setId(String id) { this.id = id; }
+
     public void setAge(int age) {
         this.age = age;
     }

@@ -1,31 +1,21 @@
 package com.example.cp670_project;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -80,6 +70,15 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(staticRvAdapter);
 
+        List<Account> testAccountCount = datasource.getAllAccounts();
+
+        if (testAccountCount.size() == 0) {
+            // Create exercises
+            datasource.createAccount(account.getName(), account.getAge(), account.getHeight(),
+                    account.getWeight(), account.getEmailAddress(), account.getUsername(),
+                    account.getHashedSaltedPassword(), account.getSalt());
+        }
+
         List<Exercise> testExerciseCount = datasource.getAllExercises();
 
         if (testExerciseCount.size() == 0) {
@@ -97,7 +96,7 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
             datasource.createExercise("Dumbbell Tricep Kickback", account.getId(), "Dumbbell",
                     50, 0, 0, 0, 8, 3, 0);
         }
-        List<Meal> testMealCount = datasource.getAllMeal();
+        List<Meal> testMealCount = datasource.getAllMeals();
 
         if (testMealCount.size() == 0) {
             // Create meals
@@ -147,7 +146,7 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
 
         testExerciseCount.clear();
 
-        List<Meal> mealList = datasource.getAllMeal();
+        List<Meal> mealList = datasource.getAllMeals();
 
         Meal meal = mealList.get(0);
         items.add(new DynamicRVModel(meal.getName(), 0, 0, 0 , caloriesInFlag));
