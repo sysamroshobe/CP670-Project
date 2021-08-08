@@ -54,6 +54,24 @@ public class ExercisesDataSourceTest extends TestCase  {
     }
 
     @Test
+    public void testCreateAccount() {
+        // Arrange
+        // See setup
+
+        // Act
+        Account account = datasource.createAccount("John Doe", 35, 185, 170,
+                "xyz@123.com", "john@doe.com", "12345", "678");
+
+        // Assert
+        assertNotNull(account);
+        assertEquals("John Doe", account.getName());
+        //assertEquals(35, account.getAge());
+        //assertEquals(185, account.getHeight());
+        //assertEquals(170, account.getWeight());
+    }
+
+
+                                 @Test
     public void testGetAllExercises() {
         // Arrange
         // See setup
