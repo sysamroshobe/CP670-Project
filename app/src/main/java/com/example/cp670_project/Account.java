@@ -18,7 +18,7 @@ public class Account implements Serializable {
     private Exercise[] exercises;
     private CustomExercise[] customExercises;
 
-    public void addMeal(Meal newMeal) {
+    public boolean addMeal(Meal newMeal) {
         int size = this.meals.length;
 
         Meal[] newMeals = new Meal[size + 1];
@@ -30,9 +30,11 @@ public class Account implements Serializable {
         newMeals[size] = newMeal;
 
         this.meals = newMeals;
+
+        return true;
     }
 
-    public void addExercise(Exercise newExercise) {
+    public boolean addExercise(Exercise newExercise) {
         int size = this.exercises.length;
 
         Exercise[] newExercises = new Exercise[size + 1];
@@ -44,6 +46,8 @@ public class Account implements Serializable {
         newExercises[size] = newExercise;
 
         this.exercises = newExercises;
+
+        return true;
     }
 
     public void addCustomExercise(CustomExercise newCustomExercise) {
