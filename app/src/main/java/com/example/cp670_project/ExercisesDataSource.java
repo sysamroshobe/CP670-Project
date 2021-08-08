@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class ExercisesDataSource {
     // Database fields
@@ -110,7 +111,6 @@ public class ExercisesDataSource {
                                    double distance, double lengthOfTime, int caloriesOut,
                                    int repetitions, int sets, int image) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteOpenHelper.ID, id + "");
         values.put(MySQLiteOpenHelper.ITEM_NAME, item);
         values.put(MySQLiteOpenHelper.OWNER_ID, ownerId);
         values.put(MySQLiteOpenHelper.TYPE, type);
@@ -154,5 +154,209 @@ public class ExercisesDataSource {
         exercise.setId(cursor.getString(0));
         exercise.setExercise(cursor.getString(1));
         return exercise;
+    }
+
+    // Meals
+    public Meal createMeal(String item, String ownerId, int caloriesIn) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.OWNER_ID, ownerId);
+        values.put(MySQLiteOpenHelper.CALORIES_IN, caloriesIn);
+        values.put(MySQLiteOpenHelper.DATE_TIME, String.valueOf(new Date()));
+
+        long insertId = database.insert(MySQLiteOpenHelper.TABLE_OF_MEALS, null,
+                values);
+
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_MEALS,
+                columns, MySQLiteOpenHelper.ID + " = " + insertId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        Meal newMeal = cursorToMeal(cursor);
+
+        // Log the item stored
+        Log.d(TAG, "item = " + cursorToMeal(cursor).toString()
+                + " insert ID = " + insertId);
+        cursor.close();
+        return newMeal;
+    }
+
+    public void deleteMeal(Meal meal) {
+        String id = meal.getId();
+        Log.d(TAG, "delete item = " + id);
+        System.out.println("Meal deleted with id: " + id);
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+    }
+
+    public void deleteAllMeals() {
+        System.out.println("Meal deleted all");
+        Log.d(TAG, "delete all = ");
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, null, null);
+    }
+
+    public List<Meal> getAllMeals() {
+        List <Meal> meals = new ArrayList<>();
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_MEALS,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Meal meal = cursorToMeal(cursor);
+            Log.d(TAG, "get item = " + cursorToMeal(cursor).toString());
+            meals.add(meal);
+            cursor.moveToNext();
+        }
+        // Make sure to close the cursor
+        cursor.close();
+        return meals;
+    }
+
+    public long countMeals() {
+        long count = DatabaseUtils.queryNumEntries(database, MySQLiteOpenHelper.TABLE_OF_MEALS);
+        return count;
+    }
+
+    public Meal updateMeal(String id, String item, String ownerId, int caloriesIn) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.OWNER_ID, ownerId);
+        values.put(MySQLiteOpenHelper.CALORIES_IN, caloriesIn);
+        values.put(MySQLiteOpenHelper.DATE_TIME, String.valueOf(new Date()));
+
+        // Set datetime
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String currentDateandTime = sdf.format(new Date());
+        values.put(MySQLiteOpenHelper.DATE_TIME, currentDateandTime);
+
+        // Update database
+        database.update(MySQLiteOpenHelper.TABLE_OF_MEALS, values, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+        // Update object
+        Meal meal = new Meal();
+        meal.setCaloriesIn(caloriesIn);
+        meal.setId(id);
+        meal.setCaloriesIn(caloriesIn);
+        meal.setDate(new Date());
+
+        return meal;
+    }
+
+    private Meal cursorToMeal(Cursor cursor) {
+        Meal meal = new Meal();
+        meal.setId(cursor.getString(0));
+        meal.setName(cursor.getString(1));
+        return meal;
+    }
+
+    // Accounts
+    public Account createAccount(String item, int age, double height, double weight,
+                                 String email, String username, String hashedPassword,
+                                 String salt) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.AGE, age);
+        values.put(MySQLiteOpenHelper.HEIGHT, height);
+        values.put(MySQLiteOpenHelper.WEIGHT, weight);
+        values.put(MySQLiteOpenHelper.EMAIL, email);
+        values.put(MySQLiteOpenHelper.USERNAME, username);
+        values.put(MySQLiteOpenHelper.HASHED_PASSWORD, hashedPassword);
+        values.put(MySQLiteOpenHelper.SALT, salt);
+
+        long insertId = database.insert(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS, null,
+                values);
+
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS,
+                columns, MySQLiteOpenHelper.ID + " = " + insertId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        Account newAccount = cursorToAccount(cursor);
+
+        // Log the item stored
+        Log.d(TAG, "item = " + cursorToAccount(cursor).toString()
+                + " insert ID = " + insertId);
+        cursor.close();
+
+        return newAccount;
+    }
+
+    public void deleteAccount(Account meal) {
+        String id = meal.getId();
+        Log.d(TAG, "delete item = " + id);
+        System.out.println("Account deleted with id: " + id);
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+    }
+
+    public void deleteAllAccounts() {
+        System.out.println("Account deleted all");
+        Log.d(TAG, "delete all = ");
+
+        database.delete(MySQLiteOpenHelper.TABLE_OF_MEALS, null, null);
+    }
+
+    public List<Account> getAllAccounts() {
+        List <Account> meals = new ArrayList<>();
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_OF_MEALS,
+                columns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Account meal = cursorToAccount(cursor);
+            Log.d(TAG, "get item = " + cursorToAccount(cursor).toString());
+            meals.add(meal);
+            cursor.moveToNext();
+        }
+        // Make sure to close the cursor
+        cursor.close();
+        return meals;
+    }
+
+    public long countAccounts() {
+        long count = DatabaseUtils.queryNumEntries(database, MySQLiteOpenHelper.TABLE_OF_ACCOUNTS);
+        return count;
+    }
+
+    public Account updateAccount(String id, String item, int age, double height, double weight,
+                                 String email, String username, String hashedPassword,
+                                 String salt) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteOpenHelper.ITEM_NAME, item);
+        values.put(MySQLiteOpenHelper.AGE, age);
+        values.put(MySQLiteOpenHelper.HEIGHT, height);
+        values.put(MySQLiteOpenHelper.WEIGHT, weight);
+        values.put(MySQLiteOpenHelper.EMAIL, email);
+        values.put(MySQLiteOpenHelper.USERNAME, username);
+        values.put(MySQLiteOpenHelper.HASHED_PASSWORD, hashedPassword);
+        values.put(MySQLiteOpenHelper.SALT, salt);
+
+        // Update database
+        database.update(MySQLiteOpenHelper.TABLE_OF_ACCOUNTS, values, MySQLiteOpenHelper.ID
+                + " = " + id, null);
+
+        // Update object
+        Account account = new Account();
+        account.setName(item);
+        account.setAge(age);
+        account.setHeight(height);
+        account.setWeight(weight);
+        account.setEmailAddress(email);
+        account.setUsername(username);
+        account.setHashedSaltedPassword(hashedPassword);
+        account.setSalt(salt);
+
+        return account;
+    }
+
+    private Account cursorToAccount(Cursor cursor) {
+        Account account = new Account();
+        account.setId(cursor.getString(0));
+        account.setName(cursor.getString(1));
+        return account;
     }
 }
