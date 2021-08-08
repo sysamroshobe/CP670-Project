@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -109,6 +110,7 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         List<Exercise> exerciseList = datasource.getAllExercises();
 
         Exercise exercise = exerciseList.get(0);
+        int calburn = exercise.getCaloriesOut();
         Boolean caloriesInFlag = Boolean.FALSE;
         items.add(new DynamicRVModel(exercise.getName(), 0, 0, 0 , caloriesInFlag));
         account.addExercise(exercise);
@@ -149,6 +151,7 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         List<Meal> mealList = datasource.getAllMeals();
 
         Meal meal = mealList.get(0);
+        int test = meal.getCaloriesIn();
         items.add(new DynamicRVModel(meal.getName(), 0, 0, 0 , caloriesInFlag));
         account.addMeal(meal);
         Log.d(TAG, "Added meal " + meal.getName());
@@ -218,7 +221,7 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Spending by Category");
+        pieChart.setCenterText("Daily Activity");
         pieChart.setCenterTextSize(15);
         pieChart.setDrawRoundedSlices(true);
         pieChart.setHoleRadius(82);
@@ -234,15 +237,22 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
     }
 
     private void loadPieChartData() {
+        Date date = new Date();
+
+
+
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(0.2f, "Food & Dining"));
-        entries.add(new PieEntry(0.15f, "Medical"));
-        entries.add(new PieEntry(0.10f, "Entertainment"));
-        entries.add(new PieEntry(0.25f, "Electricity and Gas"));
-        entries.add(new PieEntry(0.3f, "Housing"));
+
+
+
+        entries.add(new PieEntry(0.2f, "Caloric Intake"));
+
+
+        entries.add(new PieEntry(0.15f, "Caloric Burn"));
+        entries.add(new PieEntry(0.10f, "Active Period"));
 
         ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.MATERIAL_COLORS) {
+        for (int color: ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
 
