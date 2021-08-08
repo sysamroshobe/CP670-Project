@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder> {
+public class SingleItem extends MainMenuItem<SingleItem.ViewHolder> {
 
     private int selectedItemIconTint;
     private int selectedItemTextTint;
@@ -18,7 +18,7 @@ public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder> {
     private Drawable icon;
     private String title;
 
-    public SimpleItem(Drawable icon, String title) {
+    public SingleItem(Drawable icon, String title) {
         this.icon = icon;
         this.title = title;
     }
@@ -39,27 +39,27 @@ public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder> {
         holder.icon.setColorFilter(isChecked ? selectedItemIconTint : normalItemIconTint);
     }
 
-    public SimpleItem withSelectedIconTint(int selectedItemIconTint) {
+    public SingleItem withSelectedIconTint(int selectedItemIconTint) {
         this.selectedItemIconTint = selectedItemIconTint;
         return this;
     }
 
-    public SimpleItem withSelectedTextTint(int selectedItemTextTint) {
+    public SingleItem withSelectedTextTint(int selectedItemTextTint) {
         this.selectedItemTextTint = selectedItemTextTint;
         return this;
     }
 
-    public SimpleItem withIconTint(int normalItemIconTint) {
+    public SingleItem withIconTint(int normalItemIconTint) {
         this.normalItemIconTint = normalItemIconTint;
         return this;
     }
 
-    public SimpleItem withTextTint(int normalItemTextTint) {
+    public SingleItem withTextTint(int normalItemTextTint) {
         this.normalItemTextTint = normalItemTextTint;
         return this;
     }
 
-    static class ViewHolder extends DrawerAdapter.ViewHolder {
+    static class ViewHolder extends MenuAdapter.ViewHolder {
 
         private ImageView icon;
         private TextView title;

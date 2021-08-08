@@ -42,4 +42,10 @@
     <string name="repetitions">5</string>
     <string name="sets">3</string>
     <string name="image">0</string>
+    <string name="year">Year</string>
+    <string name="month_text">Month</string>
+    <string name="day_text">Day</string>
+    <string name="some_necessary_details">Some Necessary details</string>
+    <string name="Meal">Burger</string>
+    <string name="user">User</string>
 </resources>

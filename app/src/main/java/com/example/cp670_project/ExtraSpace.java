@@ -4,19 +4,19 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SpaceItem extends DrawerItem<SpaceItem.ViewHolder> {
+public class ExtraSpace extends MainMenuItem<ExtraSpace.ViewHolder> {
 
-    private int spaceDp;
+    private int space;
 
-    public SpaceItem(int spaceDp) {
-        this.spaceDp = spaceDp;
+    public ExtraSpace(int space) {
+        this.space = space;
     }
 
     @Override
     public ViewHolder createViewHolder(ViewGroup parent) {
         Context c = parent.getContext();
         View view = new View(c);
-        int height = (int) (c.getResources().getDisplayMetrics().density * spaceDp);
+        int height = (int) (c.getResources().getDisplayMetrics().density * space);
         view.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 height));
@@ -29,11 +29,11 @@ public class SpaceItem extends DrawerItem<SpaceItem.ViewHolder> {
     }
 
     @Override
-    public boolean isSelectable() {
+    public boolean Selectable() {
         return false;
     }
 
-    static class ViewHolder extends DrawerAdapter.ViewHolder {
+    static class ViewHolder extends MenuAdapter.ViewHolder {
 
         public ViewHolder(View itemView) {
             super(itemView);

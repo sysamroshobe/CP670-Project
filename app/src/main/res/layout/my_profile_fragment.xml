@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="#10172C"
+    android:rotation="0">
 
     <TextView
         android:id="@+id/textView3"
@@ -23,14 +24,14 @@
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="176dp"
+        app:auto_cycle="true"
+        app:corner_radius="5"
+        app:delay="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:placeholder="@drawable/logo"
-        app:auto_cycle="true"
         app:period="1000"
-        app:delay="0"
-        app:corner_radius="5"/>
+        app:placeholder="@drawable/logo" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -75,14 +76,13 @@
 
     <Button
         android:id="@+id/Gender_buttn"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:background="@drawable/search_bg"
-        android:backgroundTint="@color/cardview_dark_background"
+        android:backgroundTint="#222121"
         android:text="@string/gender_string"
         android:textColor="@color/white"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toStartOf="@+id/age_btn"
         app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,9 +93,10 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/static_rv_bg"
+        android:backgroundTint="#222121"
         android:text="@string/bday_string"
         android:textColor="@color/white"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/Gender_buttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Gender_buttn"
@@ -106,9 +107,9 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:background="@drawable/static_rv_bg"
-        android:backgroundTint="@color/cardview_dark_background"
+        android:backgroundTint="#222121"
         android:text="@string/height_text"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toStartOf="@+id/weight_btn"
         app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,8 +120,9 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/static_rv_bg"
+        android:backgroundTint="#222121"
         android:text="@string/weight_string"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/height_buttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/height_buttn" />

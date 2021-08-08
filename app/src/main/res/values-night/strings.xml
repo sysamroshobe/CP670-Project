@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="height_text">183.0 cm</string>
+    <string name="year">Year</string>
+    <string name="day_text">Day</string>
 </resources>

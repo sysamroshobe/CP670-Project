@@ -11,15 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder> {
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
-    private List<DrawerItem> items;
-    private Map<Class<? extends DrawerItem>, Integer> viewTypes;
-    private SparseArray<DrawerItem> holderFactories;
+    private List<MainMenuItem> items;
+    private Map<Class<? extends MainMenuItem>, Integer> viewTypes;
+    private SparseArray<MainMenuItem> holderFactories;
 
     private OnItemSelectedListener listener;
 
-    public DrawerAdapter(List<DrawerItem> items) {
+    public MenuAdapter(List<MainMenuItem> items) {
         this.items = items;
         this.viewTypes = new HashMap<>();
         this.holderFactories = new SparseArray<>();
@@ -53,7 +53,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
 
     private void processViewTypes() {
         int type = 0;
-        for (DrawerItem item : items) {
+        for (MainMenuItem item : items) {
             if (!viewTypes.containsKey(item.getClass())) {
                 viewTypes.put(item.getClass(), type);
                 holderFactories.put(type, item);
@@ -63,13 +63,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     }
 
     public void setSelected(int position) {
-        DrawerItem newChecked = items.get(position);
-        if (!newChecked.isSelectable()) {
+        MainMenuItem newChecked = items.get(position);
+        if (!newChecked.Selectable()) {
             return;
         }
 
         for (int i = 0; i < items.size(); i++) {
-            DrawerItem item = items.get(i);
+            MainMenuItem item = items.get(i);
             if (item.isChecked()) {
                 item.setChecked(false);
                 notifyItemChanged(i);
@@ -81,7 +81,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         notifyItemChanged(position);
 
         if (listener != null) {
-            listener.onItemSelected(position);
+            listener.MenuItemSelected(position);
         }
     }
 
@@ -90,12 +90,12 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
     }
 
     public interface OnItemSelectedListener {
-        void onItemSelected(int position);
+        void MenuItemSelected(int position);
     }
 
     static abstract class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private DrawerAdapter adapter;
+        private MenuAdapter adapter;
 
         public ViewHolder(View itemView) {
             super(itemView);

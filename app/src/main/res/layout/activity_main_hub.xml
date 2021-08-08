@@ -23,34 +23,10 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@android:color/darker_gray"
+        android:background="#10172C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-
-    <ImageView
-        android:id="@+id/Home"
-        android:layout_width="28dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="72dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Exercises"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Exercises"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/icon_feather_home" />
-
-    <ImageView
-        android:id="@+id/Exercises"
-        android:layout_width="35dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
-        app:layout_constraintStart_toEndOf="@+id/Home"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961"
-        app:srcCompat="@drawable/icon_dumbbell" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,4 +43,6 @@
     <string name="repetitions">5</string>
     <string name="sets">3</string>
     <string name="image">0</string>
+    <string name="year">Year</string>
+    <string name="day_text">Day</string>
 </resources>

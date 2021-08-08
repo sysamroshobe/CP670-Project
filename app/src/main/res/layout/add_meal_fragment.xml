@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#10172C">
 
     <EditText
         android:id="@+id/caloriesIn"
@@ -11,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="12dp"
+        android:backgroundTint="#E1D9D9"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +24,11 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="136dp"
+        android:background="@drawable/static_rv_bg"
+        android:backgroundTint="#2C2A2A"
         android:text="@string/calories_in"
+        android:textAlignment="center"
+        android:textColor="#F3EBEB"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +40,7 @@
         android:layout_marginStart="164dp"
         android:layout_marginEnd="162dp"
         android:text="@string/add_meal"
+        android:textColor="#FF6D00"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +52,11 @@
         android:layout_height="35dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="65dp"
+        android:background="@drawable/static_rv_bg"
+        android:backgroundTint="#534E4E"
         android:text="@string/meal_name"
+        android:textAlignment="center"
+        android:textColor="#F3ECEC"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="#F1EBEB"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +80,9 @@
         android:layout_marginStart="159dp"
         android:layout_marginTop="209dp"
         android:layout_marginEnd="164dp"
+        android:backgroundTint="#7FD648"
         android:text="@string/save_button"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

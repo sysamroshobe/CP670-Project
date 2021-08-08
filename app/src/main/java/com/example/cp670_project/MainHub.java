@@ -1,5 +1,10 @@
 package com.example.cp670_project;
 
+import android.content.res.TypedArray;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,32 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Parcelable;
-
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
-import com.yarolegovich.slidingrootnav.SlidingRootNavLayout;
 
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
+public class MainHub extends AppCompatActivity implements MenuAdapter.OnItemSelectedListener {
     BarChart mChart1;
     private PieChart pieChart;
 
@@ -44,14 +32,13 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
     private static final int POS_MY_PROFILE = 2;
     private static final int POS_ADD_MEAL = 3;
     private static final int POS_ADD_EXERCISE = 4;
-    private static final int POS_SETTINGS = 5;
-    private static final int POS_ABOUT_US = 6;
-    private static final int POS_LOGOUT = 7;
-    private String[] screenTitles;
-    private Drawable[] screenIcons;
+    private static final int POS_ABOUT_US = 5;
+    private static final int POS_LOGOUT = 6;
+    private String[] menuTitles;
+    private Drawable[] smenuIcons;
     private Account account; // THIS IS GLOBAL
 
-    private SlidingRootNav slidingRootNav;
+    private SlidingRootNav NavDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +55,7 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        slidingRootNav = new SlidingRootNavBuilder(this)
+        NavDrawer = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
                 .withRootViewScale(0.75f)
                 .withRootViewElevation(25)
@@ -79,36 +66,35 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
 
-        screenIcons = loadScreenIcons();
-        screenTitles = loadScreenTitles();
+        smenuIcons = createIcons();
+        menuTitles = createTitles();
 
-        DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
-                createItemFor(POS_CLOSE),
-                createItemFor(POS_DASHBOARD).setChecked(true),
-                createItemFor(POS_MY_PROFILE),
-                createItemFor(POS_ADD_MEAL),
-                createItemFor(POS_ADD_EXERCISE),
-                createItemFor(POS_SETTINGS),
-                createItemFor(POS_ABOUT_US),
-                new SpaceItem(260),
-                createItemFor(POS_LOGOUT)
+        MenuAdapter menuAdapter = new MenuAdapter(Arrays.asList(
+                MenuItemCreate(POS_CLOSE),
+                MenuItemCreate(POS_DASHBOARD).setChecked(true),
+                MenuItemCreate(POS_MY_PROFILE),
+                MenuItemCreate(POS_ADD_MEAL),
+                MenuItemCreate(POS_ADD_EXERCISE),
+                MenuItemCreate(POS_ABOUT_US),
+                new ExtraSpace(60),
+                MenuItemCreate(POS_LOGOUT)
         ));
-        adapter.setListener(this);
+        menuAdapter.setListener(this);
 
         RecyclerView list = findViewById(R.id.drawer_list);
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(this));
-        list.setAdapter(adapter);
+        list.setAdapter(menuAdapter);
 
-        adapter.setSelected(POS_DASHBOARD);
+        menuAdapter.setSelected(POS_DASHBOARD);
     }
 
-    private DrawerItem createItemFor(int position) {
-        return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.pink))
+    private MainMenuItem MenuItemCreate(int position) {
+        return new SingleItem(smenuIcons[position], menuTitles[position])
+                .withIconTint(color(android.R.color.holo_blue_light))
                 .withTextTint(color(R.color.black))
-                .withSelectedIconTint(color(R.color.pink))
-                .withSelectedTextTint(color(R.color.pink));
+                .withSelectedIconTint(color(android.R.color.holo_blue_dark))
+                .withSelectedTextTint(color(android.R.color.holo_green_light));
     }
 
     @ColorInt
@@ -121,25 +107,25 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
         finish();
     }
 
-    private String[] loadScreenTitles() {
+    private String[] createTitles() {
         return getResources().getStringArray(R.array.id_activityScreenTitles);
     }
 
-    private Drawable[] loadScreenIcons() {
-        TypedArray ta = getResources().obtainTypedArray(R.array.id_activityScreenIcons);
-        Drawable[] icons = new Drawable[ta.length()];
-        for (int i = 0; i < ta.length(); i++){
-            int id = ta.getResourceId(i,0);
+    private Drawable[] createIcons() {
+        TypedArray iconArray = getResources().obtainTypedArray(R.array.id_activityScreenIcons);
+        Drawable[] icons = new Drawable[iconArray.length()];
+        for (int i = 0; i < iconArray.length(); i++){
+            int id = iconArray.getResourceId(i,0);
             if (id!=0){
                 icons[i] = ContextCompat.getDrawable(this,id);
             }
         }
-        ta.recycle();
+        iconArray.recycle();
         return icons;
     }
 
     @Override
-    public void onItemSelected(int position) {
+    public void MenuItemSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
         bundle.putSerializable("Account", account);
@@ -167,11 +153,6 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
             transaction.replace(R.id.container, addExerciseFragment);
         }
 
-        else if (position == POS_SETTINGS){
-            SettingsFragment settingsFragment = new SettingsFragment();
-            transaction.replace(R.id.container, settingsFragment);
-        }
-
         else if (position == POS_ABOUT_US){
             AboutUsFragment aboutUsFragment = new AboutUsFragment();
             transaction.replace(R.id.container, aboutUsFragment);
@@ -181,66 +162,11 @@ public class MainHub extends AppCompatActivity implements DrawerAdapter.OnItemSe
             finish();
         }
 
-        slidingRootNav.closeMenu();
+        NavDrawer.closeMenu();
         transaction.addToBackStack(null);
         transaction.commit();
     }
 
-    private DrawerItem CreateItemFor(int position){
-        return new SimpleItem(screenIcons[position],screenTitles[position]);
-    }
-
-    private void setupPieChart() {
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setUsePercentValues(true);
-        pieChart.setEntryLabelTextSize(12);
-        pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Spending by Category");
-        pieChart.setCenterTextSize(15);
-        pieChart.setDrawRoundedSlices(true);
-        pieChart.setHoleRadius(82);
-        pieChart.setHoleColor(1);
-        pieChart.getDescription().setEnabled(false);
-
-        Legend l = pieChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setDrawInside(false);
-        l.setEnabled(true);
-    }
-
-    private void loadPieChartData() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(0.2f, "Food & Dining"));
-        entries.add(new PieEntry(0.15f, "Medical"));
-        entries.add(new PieEntry(0.10f, "Entertainment"));
-        entries.add(new PieEntry(0.25f, "Electricity and Gas"));
-        entries.add(new PieEntry(0.3f, "Housing"));
-
-        ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color);
-        }
-
-        for (int color: ColorTemplate.VORDIPLOM_COLORS) {
-            colors.add(color);
-        }
-
-        PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
-        dataSet.setColors(colors);
-
-        PieData data = new PieData(dataSet);
-        data.setDrawValues(true);
-        data.setValueFormatter(new PercentFormatter(pieChart));
-        data.setValueTextSize(12f);
-        data.setValueTextColor(Color.BLACK);
-
-        pieChart.setData(data);
-        pieChart.invalidate();
-
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
-    }
 
 
     @Override
