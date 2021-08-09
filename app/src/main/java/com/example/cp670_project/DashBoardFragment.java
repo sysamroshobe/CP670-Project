@@ -92,72 +92,73 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         if (testExerciseCount.size() == 0) {
             // Create default exercises
             sourceData.addDefaultExercises(datasource, account);
-
-            List<Exercise> exerciseList = datasource.getAllExercises();
-
-            Exercise exercise = exerciseList.get(0);
-            items.add(new DynamicRVModel(exercise.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise);
-            Log.d(TAG, "Added exercise " + exercise.getName());
-
-            Exercise exercise2 = exerciseList.get(1);
-            caloriesInFlag = Boolean.FALSE;
-            items.add(new DynamicRVModel(exercise2.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise2);
-            Log.d(TAG, "Added exercise " + exercise2.getName());
-
-            Exercise exercise3 = exerciseList.get(2);
-            caloriesInFlag = Boolean.FALSE;
-            items.add(new DynamicRVModel(exercise3.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise3);
-            Log.d(TAG, "Added exercise " + exercise3.getName());
-
-            Exercise exercise4 = exerciseList.get(3);
-            caloriesInFlag = Boolean.FALSE;
-            items.add(new DynamicRVModel(exercise4.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise4);
-            Log.d(TAG, "Added exercise " + exercise4.getName());
-
-            Exercise exercise5 = exerciseList.get(4);
-            caloriesInFlag = Boolean.FALSE;
-            items.add(new DynamicRVModel(exercise5.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise5);
-            Log.d(TAG, "Added exercise " + exercise5.getName());
-
-            Exercise exercise6 = exerciseList.get(5);
-            caloriesInFlag = Boolean.FALSE;
-            items.add(new DynamicRVModel(exercise6.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addExercise(exercise6);
-            Log.d(TAG, "Added exercise " + exercise6.getName());
         }
+
+        List<Exercise> exerciseList = datasource.getAllExercises();
+
+        Exercise exercise = exerciseList.get(0);
+        items.add(new DynamicRVModel(exercise.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise);
+        Log.d(TAG, "Added exercise " + exercise.getName());
+
+        Exercise exercise2 = exerciseList.get(1);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise2.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise2);
+        Log.d(TAG, "Added exercise " + exercise2.getName());
+
+        Exercise exercise3 = exerciseList.get(2);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise3.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise3);
+        Log.d(TAG, "Added exercise " + exercise3.getName());
+
+        Exercise exercise4 = exerciseList.get(3);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise4.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise4);
+        Log.d(TAG, "Added exercise " + exercise4.getName());
+
+        Exercise exercise5 = exerciseList.get(4);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise5.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise5);
+        Log.d(TAG, "Added exercise " + exercise5.getName());
+
+        Exercise exercise6 = exerciseList.get(5);
+        caloriesInFlag = Boolean.FALSE;
+        items.add(new DynamicRVModel(exercise6.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addExercise(exercise6);
+        Log.d(TAG, "Added exercise " + exercise6.getName());
+
         List<Meal> testMealCount = datasource.getAllMeals();
 
         if (testMealCount.size() == 0) {
             // Create default meals
             sourceData.addDefaultMeals(datasource, account);
-
-            List<Meal> mealList = datasource.getAllMeals();
-
-            Meal meal = mealList.get(0);
-            items.add(new DynamicRVModel(meal.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addMeal(meal);
-            Log.d(TAG, "Added meal " + meal.getName());
-
-            Meal meal2 = mealList.get(1);
-            items.add(new DynamicRVModel(meal2.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addMeal(meal2);
-            Log.d(TAG, "Added meal " + meal2.getName());
-
-            Meal meal3 = mealList.get(2);
-            items.add(new DynamicRVModel(meal3.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addMeal(meal3);
-            Log.d(TAG, "Added meal " + meal3.getName());
-
-            Meal meal4 = mealList.get(3);
-            items.add(new DynamicRVModel(meal4.getName(), 0, 0, 0 , caloriesInFlag));
-            account.addMeal(meal4);
-            Log.d(TAG, "Added meal " + meal4.getName());
         }
+
+        List<Meal> mealList = datasource.getAllMeals();
+
+        Meal meal = mealList.get(0);
+        items.add(new DynamicRVModel(meal.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addMeal(meal);
+        Log.d(TAG, "Added meal " + meal.getName());
+
+        Meal meal2 = mealList.get(1);
+        items.add(new DynamicRVModel(meal2.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addMeal(meal2);
+        Log.d(TAG, "Added meal " + meal2.getName());
+
+        Meal meal3 = mealList.get(2);
+        items.add(new DynamicRVModel(meal3.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addMeal(meal3);
+        Log.d(TAG, "Added meal " + meal3.getName());
+
+        Meal meal4 = mealList.get(3);
+        items.add(new DynamicRVModel(meal4.getName(), 0, 0, 0 , caloriesInFlag));
+        account.addMeal(meal4);
+        Log.d(TAG, "Added meal " + meal4.getName());
 
         testExerciseCount.clear();
         testMealCount.clear();
