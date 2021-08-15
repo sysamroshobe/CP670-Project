@@ -14,6 +14,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -23,10 +27,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
     private static final String TAG = "DashBoardFragment";
@@ -220,9 +220,8 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
         pieChart.setDrawHoleEnabled(true);
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
-        pieChart.setEntryLabelColor(Color.WHITE);
+        pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setCenterText("Daily Activity");
-        pieChart.setCenterTextColor(Color.WHITE);
         pieChart.setCenterTextSize(15);
         pieChart.setDrawRoundedSlices(true);
         pieChart.setHoleRadius(82);
@@ -247,6 +246,8 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
 
 
         entries.add(new PieEntry(0.2f, "Caloric Intake"));
+
+
         entries.add(new PieEntry(0.15f, "Caloric Burn"));
         entries.add(new PieEntry(0.10f, "Active Period"));
 
@@ -259,14 +260,14 @@ public class DashBoardFragment extends Fragment implements UpdateRecyclerView {
             colors.add(color);
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "Daily Info");
+        PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
         dataSet.setColors(colors);
 
         PieData data = new PieData(dataSet);
         data.setDrawValues(true);
         data.setValueFormatter(new PercentFormatter(pieChart));
         data.setValueTextSize(12f);
-        data.setValueTextColor(Color.WHITE);
+        data.setValueTextColor(Color.BLACK);
 
         pieChart.setData(data);
         pieChart.invalidate();
